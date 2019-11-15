@@ -1,4 +1,3 @@
-
 //PayForm------------------------------------/
 .payForm {
   background: #ffffff;
@@ -8,8 +7,10 @@
   border-radius: 6px;
   box-sizing: border-box;
 }
+
 .payForm_title {
   padding: 24px 40px 0 40px;
+
   .payForm_title_totalPay {
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
@@ -20,10 +21,12 @@
     letter-spacing: 0.5625px;
     color: #4F4F4F;
     padding-bottom: 10px;
+
     span {
       color: royalblue;
     }
   }
+
   .payForm_title_info {
     height: 24px;
     font-family: 'Open Sans', sans-serif;
@@ -36,23 +39,78 @@
 
 //userData------------------------------------/
 .userData_wrap {
+  border-radius: 6px 6px 0 0;
   border-bottom: 1px solid #E2E2E5;
-  padding: 10px 40px 0 40px;
-  .inputData_section {
-    span {
-      font-family: 'Open Sans', sans-serif;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 12px;
-      line-height: 24px;
-      letter-spacing: 0.45px;
-      text-transform: uppercase;
-      color: #8D8E95;
-      display: block;
+  padding: 16px 40px 30px 40px;
+}
+
+.inputData_section {
+  margin-bottom: 43px;
+
+  span {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 30px;
+    letter-spacing: 0.45px;
+    text-transform: uppercase;
+    color: #8D8E95;
+    display: block;
+  }
+
+  input {
+    width: 100%;
+    height: 42px;
+    background: rgba(235, 87, 87, 0.1);
+    border: 1px solid #EB5757;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 0 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 42px;
+    letter-spacing: 0.75px;
+    color: #4F4F4F;
+  }
+}
+
+.smallBottomMargin {
+  margin-bottom: 34px;
+}
+.shotWidth {
+  width: 180px;
+}
+
+//cardData------------------------------------/
+.cardData {
+  border-radius: 0 0 6px 6px;
+  padding: 30px 40px 20px 40px;
+  background-color: #FBFBFE;
+
+  .cardData_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 13px;
+
+    a {
+      height: 24px;
+      display: flex;
+      align-items: center;
+      margin: 3px 7px 3px 0;
     }
 
   }
 }
+.cardData_Inline {
+  display: flex;
+  justify-content: space-between;
+}
+
+
 
 
 
