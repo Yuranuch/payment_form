@@ -1,5 +1,5 @@
 
-
+//PayForm------------------------------------/
 .payForm {
   background: #ffffff;
   max-width: 480px;
@@ -8,8 +8,52 @@
   border-radius: 6px;
   box-sizing: border-box;
 }
+.payForm_title {
+  padding: 24px 40px 0 40px;
+  .payForm_title_totalPay {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    align-items: center;
+    display: block;
+    letter-spacing: 0.5625px;
+    color: #4F4F4F;
+    padding-bottom: 10px;
+    span {
+      color: royalblue;
+    }
+  }
+  .payForm_title_info {
+    height: 24px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #43444C;
+    display: block;
+  }
+}
+
+//userData------------------------------------/
 .userData_wrap {
   border-bottom: 1px solid #E2E2E5;
-  padding: 40px;
+  padding: 10px 40px 0 40px;
+  .inputData_section {
+    span {
+      font-family: 'Open Sans', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 24px;
+      letter-spacing: 0.45px;
+      text-transform: uppercase;
+      color: #8D8E95;
+      display: block;
+    }
+
+  }
 }
+
+
+
 

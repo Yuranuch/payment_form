@@ -3,7 +3,7 @@ import React from 'react';
 function UserDatta() {
     return (
         <div className="userData_wrap">
-            <div>
+            <div className="inputData_section">
                 <span>Ваш email</span>
                 <input type="text" name="" value=""/>
             </div>
