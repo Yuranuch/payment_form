@@ -46,8 +46,10 @@
 
 .inputData_section {
   margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
 
-  span {
+  >span {
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -74,6 +76,7 @@
     line-height: 42px;
     letter-spacing: 0.75px;
     color: #4F4F4F;
+
   }
   input.error{
     background: rgba(235, 87, 87, 0.1);
@@ -97,6 +100,44 @@
 }
 .shotWidth {
   width: 180px;
+  position: relative;
+  z-index: 1;
+}
+.inputData_hint {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  z-index: 3;
+  top: 42px;
+  right: 20px;
+  background: url("/src/assets/icons/help.png") #4A67E7;
+  cursor: pointer;
+  .inputData_hint_info {
+    position: absolute;
+    width: 336px;
+    height: 144px;
+    bottom: 28px;
+    left: 0;
+    margin-left: -160px;
+    background: #FFFFFF;
+    box-shadow: 0px 15px 30px rgba(186, 188, 232, 0.3);
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding: 24px;
+    z-index: 3;
+    span {
+      font-family: 'Open Sans', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px;
+      color: #43444C;
+    }
+  }
+}
+
+.validity {
+  background: url("/src/assets/icons/help.png") #000;
 }
 
 //cardData------------------------------------/
@@ -169,8 +210,6 @@
 .submitButton:disabled {
   background: linear-gradient(0deg, #E6E7EE, #E6E7EE), linear-gradient(90deg, #4A67E7 0.97%, #3942B8 99.29%);}
 
-
-
 .transactionSecurity {
   span {
     display: block;
@@ -182,12 +221,10 @@
     line-height: 20px;
     background: url("/src/assets/icons/verified.png");
     color: #000000;
-
     a {
       text-decoration: none;
       color: #4A67E7;
     }
-
   }
 }
 
