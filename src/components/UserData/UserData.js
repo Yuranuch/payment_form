@@ -1,4 +1,6 @@
 import React from 'react';
+import PhoneInput from 'react-phone-input-2'
+
 
 function UserDatta() {
     return (
@@ -9,10 +11,11 @@ function UserDatta() {
             </div>
             <div className="inputData_section">
                 <span>Номер телефона</span>
-                <input placeholder="+375(XX) XXX XX XX" type="text" name=""/>
+                {/*<input placeholder="+375(XX) XXX XX XX" type="text" name=""/>*/}
+                <PhoneInput placeholder="+375 (XX) XXX XX XX" inputExtraProps={{name: 'phone', required: true, autoFocus: true }} />
             </div>
         </div>
-    );
+    )
 }
 
 export default UserDatta;

@@ -1,25 +1,46 @@
 import React, {Component} from 'react';
+
+import onClickOutside from "react-onclickoutside"
+
 import icon_1 from "../../assets/icons/small_logo_1.png";
 import icon_2 from "../../assets/icons/small_logo_2.png";
 import icon_3 from "../../assets/icons/small_logo_3.png";
 import icon_4 from "../../assets/icons/small_logo_4.png";
+import group from "../../assets/images/GroupCard.png";
+
 
 class CardData extends Component {
 
     state = {
         hintShowing: false,
+        cardHintShowing: false,
+
     }
     onShowHint = () => {
-        if (this.state.hintShowing === true) {
+        if (this.state.hintShowing) {
             this.setState({
                 hintShowing: false
             })
         } else {
             this.setState({
-                hintShowing: true
+                hintShowing: true,
+                cardHintShowing: false
             })
         }
+    }
+    showCardHint = () => {
+        debugger
+        if (this.state.cardHintShowing) {
+            this.setState({
+                cardHintShowing: false
+            })
+        } else {
+            this.setState({
+                cardHintShowing: true,
+                hintShowing: false
 
+            })
+        }
     }
 
     render() {
@@ -34,6 +55,7 @@ class CardData extends Component {
                 <div className="inputData_section smallBottomMargin">
                     <span>Номер Карты</span>
                     <input placeholder="XXXX XXXX XXXX XXXX" type="text" name=""/>
+
                 </div>
                 <div className="inputData_section smallBottomMargin">
                     <span>Имя владельца карты</span>
@@ -44,17 +66,20 @@ class CardData extends Component {
                         <span>Срок действия</span>
                         <input placeholder="MM / YY" type="text" name=""/>
                         <div onClick={this.onShowHint} className="inputData_hint">
-                            {this.state.hintShowing && <div className="inputData_hint_info">
+                            <div className={this.state.hintShowing?"inputData_hint_info showData": "inputData_hint_info"}>
                             <span>Срок действия вашей карты написанна лицевой стороне карты.
                             Запишите срок дейсвия в формате Месяц / 2 последние цифры года.</span>
-                            </div>}
+                            </div>
                         </div>
                     </div>
                     <div className="inputData_section shotWidth">
                         <span>CVV/CVC</span>
                         <input placeholder="XXX" type="text" name=""/>
-                        <div className="inputData_hint validity">
-
+                        <div onClick={this.showCardHint} className="inputData_hint validity">
+                            <div className={this.state.cardHintShowing ? 'inputData_hint_info elsePosition': 'inputData_hint_info'}>
+                                <span>CVV/CVC – код это последние 3 цифры на оборотной стороне карты</span>
+                                <img src={group} alt="" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -71,4 +96,4 @@ class CardData extends Component {
     }
 }
 
-export default CardData;
+export default onClickOutside(CardData);
