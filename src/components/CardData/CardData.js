@@ -15,21 +15,29 @@ function CardData() {
             </div>
             <div className="inputData_section smallBottomMargin">
                 <span>Номер Карты</span>
-                <input type="text" name=""/>
+                <input placeholder="XXXX XXXX XXXX XXXX" type="text" name=""/>
             </div>
             <div className="inputData_section smallBottomMargin">
                 <span>Имя владельца карты</span>
-                <input type="text" name=""/>
+                <input placeholder="YOUR NAME" type="text" name=""/>
             </div>
             <div className="cardData_Inline">
                 <div className="inputData_section shotWidth">
                     <span>Срок действия</span>
-                    <input type="text" name=""/>
+                    <input placeholder="MM / YY" type="text" name=""/>
                 </div>
                 <div className="inputData_section shotWidth">
                     <span>CVV/CVC</span>
-                    <input type="text" name=""/>
+                    <input placeholder="XXX" type="text" name=""/>
                 </div>
+            </div>
+            <div className="agreement">
+            <span>Нажимая кнопку "Оплатить",
+                Вы соглашаетесь на обработку данных в соответствии с <a href=""> Пользовательским соглашением</a></span>
+            </div>
+            <button className="submitButton">Оплатить 270 byn</button>
+            <div className="transactionSecurity">
+                <span>Безопасность работы подтверждена <a href="">сертификатом PCI DSS</a></span>
             </div>
         </div>
     );
