@@ -85,12 +85,11 @@
     border: 1px solid #9FA1B0;
     color: #4F4F4F;
   }
-  input:active{
+  input:focus{
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid #9FA1B0;
     color: #4F4F4F;
   }
-
 }
 
 .smallBottomMargin {
@@ -148,7 +147,7 @@
   height: 56px;
   left: 520px;
   top: 727px;
-  background: linear-gradient(0deg, #E6E7EE, #E6E7EE), linear-gradient(90deg, #4A67E7 0.97%, #3942B8 99.29%);
+  background: linear-gradient(90deg, #4A67E7 0.97%, #3942B8 99.29%);
   border-radius: 7px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
@@ -161,6 +160,17 @@
   cursor: pointer;
   margin-bottom: 17px;
 }
+.submitButton:hover {
+  background: linear-gradient(90deg, #4A67E7 0.97%, #4A67E7 99.29%);
+}
+.submitButton:active {
+  background: linear-gradient(90deg, #3942B8 0.97%, #3942B8 99.29%);
+}
+.submitButton:disabled {
+  background: linear-gradient(0deg, #E6E7EE, #E6E7EE), linear-gradient(90deg, #4A67E7 0.97%, #3942B8 99.29%);}
+
+
+
 .transactionSecurity {
   span {
     display: block;
