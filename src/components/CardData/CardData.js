@@ -29,7 +29,6 @@ class CardData extends Component {
         }
     }
     showCardHint = () => {
-        debugger
         if (this.state.cardHintShowing) {
             this.setState({
                 cardHintShowing: false
@@ -65,7 +64,8 @@ class CardData extends Component {
                     <div className="inputData_section shotWidth">
                         <span>Срок действия</span>
                         <input placeholder="MM / YY" type="text" name=""/>
-                        <div onClick={this.onShowHint} className="inputData_hint">
+                        <div onClick={this.onShowHint} className={this.state.hintShowing?"inputData_hint active":"inputData_hint"}>
+                            <span>?</span>
                             <div className={this.state.hintShowing?"inputData_hint_info showData": "inputData_hint_info"}>
                             <span>Срок действия вашей карты написанна лицевой стороне карты.
                             Запишите срок дейсвия в формате Месяц / 2 последние цифры года.</span>
@@ -75,7 +75,8 @@ class CardData extends Component {
                     <div className="inputData_section shotWidth">
                         <span>CVV/CVC</span>
                         <input placeholder="XXX" type="text" name=""/>
-                        <div onClick={this.showCardHint} className="inputData_hint validity">
+                        <div onClick={this.showCardHint} className={this.state.cardHintShowing?"inputData_hint active":"inputData_hint"}>
+                            <span>?</span>
                             <div className={this.state.cardHintShowing ? 'inputData_hint_info elsePosition': 'inputData_hint_info'}>
                                 <span>CVV/CVC – код это последние 3 цифры на оборотной стороне карты</span>
                                 <img src={group} alt="" />
