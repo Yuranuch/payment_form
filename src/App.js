@@ -1,14 +1,13 @@
-import React, {Component} from 'react';
-import './App.scss';
-import { Formik } from "formik";
+import React, { Component } from "react"
+import './App.scss'
+import { Formik, Field } from "formik"
 import * as Yup from "yup"
-import PhoneInput from "react-phone-input-2";
-import icon_1 from "./assets/icons/small_logo_1.png";
-import icon_2 from "./assets/icons/small_logo_2.png";
-import icon_3 from "./assets/icons/small_logo_3.png";
-import icon_4 from "./assets/icons/small_logo_4.png";
-import group from "./assets/images/GroupCard.png";
-import Error from "./components/Error"
+import icon_1 from "./assets/icons/small_logo_1.png"
+import icon_2 from "./assets/icons/small_logo_2.png"
+import icon_3 from "./assets/icons/small_logo_3.png"
+import icon_4 from "./assets/icons/small_logo_4.png"
+import group from "./assets/images/GroupCard.png"
+import { InputField, PhoneField, ExpireField } from "./fields"
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -23,212 +22,126 @@ const validationSchema = Yup.object().shape({
         .min(16, "Номер карты должен состоять из 16-19 цифр")
         .required("Введите номер вашей карты"),
     phone: Yup.string()
-        .required("Must enter a number"),
+        .required("Введите номер телефона"),
     cvc: Yup.string()
         .max(3, "CVV/CVC: Должен стостоять из 3 символов")
         .min(3, "CVV/CVC: Должен стостоять из 3 символов")
         .required("Введите номер"),
     cardDate: Yup.string()
-        .max(4, "Срок действия месяц XX / год XX")
-        .min(4, "Срок действия месяц XX / год XX")
         .required("Ввведите срок действия вашей карты"),
 })
 
 class App extends Component {
-    state = {
-        hintShowing: false,
-        cardHintShowing: false,
-    }
-    onShowHint = () => {
-        if (this.state.hintShowing) {
-            this.setState({
-                hintShowing: false
-            })
-        } else {
-            this.setState({
-                hintShowing: true,
-                cardHintShowing: false
-            })
-        }
-    }
-    showCardHint = () => {
-        if (this.state.cardHintShowing) {
-            this.setState({
-                cardHintShowing: false
-            })
-        } else {
-            this.setState({
-                cardHintShowing: true,
-                hintShowing: false
 
-            })
-        }
+    initialValues = {
+        email: "",
+        name: "",
+        card: "",
+        phone: "",
+        cvc: "",
+        cardDate: "",
+    }
+
+    handleSubmit = submitValues => {
+      alert(JSON.stringify(submitValues))
     }
 
     render() {
         return (
-            <Formik initialValues={{email: "", name: "", card: "",  phone: "", cvc: "", cardDate: "" }}
-                    validationSchema={validationSchema}
-                    onSubmit={(values, {setSubmitting, resetForm}) =>{
-                        debugger
-                        setSubmitting(true);
-
-                        setTimeout(()=> {
-                            alert(JSON.stringify(values, null, 2));
-                            resetForm();
-                            setSubmitting(false)
-                        },1000)
-                    }}
+            <Formik
+                initialValues={this.initialValues}
+                validationSchema={validationSchema}
+                isInitialValid={false}
+                onSubmit={this.handleSubmit}
             >
-                {({
-                      values,
-                      errors,
-                      touched,
-                      handleChange,
-                      handleBlur,
-                      handleSubmit,
-                      isSubmitting,
-
-                  }) => (
+                {({ handleSubmit, isSubmitting, isValid }) => (
                     <form className="payForm" onSubmit={handleSubmit}>
-                        {/*<div className="payForm_title">*/}
-                        {/*    <span className="payForm_title_totalPay">К оплате: <span>270 BYN</span></span>*/}
-                        {/*    <span className="payForm_title_info">Годовая подписка на сервис</span>*/}
-                        {/*</div>*/}
-
-                        <div className="userData_wrap">
-                            <div className="inputData_section">
-                                <span>Ваш email</span>
-                                <input
-                                    placeholder="mail@mail.com"
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    onBlur={handleBlur}
-                                    onChange={handleChange}
-                                    value={values.email}
-                                    className={touched.email && errors.email ? "has-error" : null}
-                                />
-                                <Error touched={touched.email} message={errors.email} />
-                            </div>
-                            {/*<div className="inputData_section">*/}
-                            {/*    <span>Номер телефона</span>*/}
-                            {/*    <PhoneInput*/}
-                            {/*        placeholder="+375 (XX) XXX XX XX"*/}
-                            {/*        inputExtraProps={{name: 'phone', required: true, autoFocus: false}}*/}
-                            {/*        // type="tel"*/}
-                            {/*        // id="phone"*/}
-                            {/*        // name="phone"*/}
-                            {/*        // onBlur={handleBlur}*/}
-                            {/*        // onChange={handleChange}*/}
-                            {/*        // value={values.phone}*/}
-                            {/*        // className={touched.phone && errors.phone ? "has-error" : null}*/}
-                            {/*    />*/}
-
-                            {/*</div>*/}
+                        <div className="title">
+                            <span className="title__totalPay">К оплате: <span>270 BYN</span></span>
+                            <span className="title__info">Годовая подписка на сервис</span>
+                        </div>
+                        <div className="userData">
+                            <Field
+                                name="email"
+                                type="email"
+                                title="Ваш email"
+                                placeholder="mail@mail.com"
+                                component={InputField}
+                            />
+                            <Field
+                                name="phone"
+                                type="tel"
+                                title="Номер телефона"
+                                placeholder="+375 (XX) XXX XX XX"
+                                component={PhoneField}
+                            />
                         </div>
                         <div className="cardData">
-                            {/*<div className="cardData_list">*/}
-                            {/*    <a href=""><img src={icon_1} alt=""/></a>*/}
-                            {/*    <a href=""><img src={icon_2} alt=""/></a>*/}
-                            {/*    <a href=""><img src={icon_3} alt=""/></a>*/}
-                            {/*    <a href=""><img src={icon_4} alt=""/></a>*/}
-                            {/*</div>*/}
-                            {/*<div className="inputData_section smallBottomMargin">*/}
-                            {/*    <span>Номер Карты</span>*/}
-                            {/*    <input*/}
-                            {/*        placeholder="XXXX XXXX XXXX XXXX"*/}
-                            {/*        id="card"*/}
-                            {/*        onInput={this.handleChange}*/}
-                            {/*        type="number"*/}
-                            {/*        onBlur={handleBlur}*/}
-                            {/*        onChange={handleChange}*/}
-                            {/*        value={values.card}*/}
-                            {/*        name="card"*/}
-                            {/*        className={touched.card && errors.card ? "has-error" : null}*/}
-                            {/*    />*/}
-                            {/*    <Error touched={touched.card } message={errors.card } />*/}
-                            {/*</div>*/}
-                            {/*<div className="inputData_section smallBottomMargin">*/}
-                            {/*    <span>Имя владельца карты</span>*/}
-                            {/*    <input*/}
-                            {/*        placeholder="YOUR NAME"*/}
-                            {/*        id="name"*/}
-                            {/*        type="text"*/}
-                            {/*        onBlur={handleBlur}*/}
-                            {/*        onChange={handleChange}*/}
-                            {/*        value={values.name}*/}
-                            {/*        name="name"*/}
-                            {/*        className={touched.name && errors.name ? "has-error" : null}*/}
-                            {/*    />*/}
-                            {/*    <Error touched={touched.name} message={errors.name} />*/}
-                            {/*</div>*/}
-                            <div className="cardData_Inline">
-                            {/*    <div className="inputData_section shotWidth">*/}
-                            {/*        <span>Срок действия</span>*/}
-                            {/*        <input*/}
-                            {/*               placeholder="MM / YY"*/}
-                            {/*               id="cardDate"*/}
-                            {/*               onInput={this.handleChange}*/}
-                            {/*               type="number"*/}
-                            {/*               onBlur={handleBlur}*/}
-                            {/*               onChange={handleChange}*/}
-                            {/*               value={values.cardDate}*/}
-                            {/*               name="cardDate"*/}
-                            {/*               className={touched.cardDate && errors.cardDate ? "has-error" : null}*/}
-                            {/*        />*/}
-                            {/*        <Error touched={touched.cardDate} message={errors.cardDate} />*/}
-                            {/*        <div onClick={this.onShowHint}  tabindex="0" onBlur={this.onShowHint}*/}
-                            {/*             className={this.state.hintShowing ? "inputData_hint active" : "inputData_hint"}>*/}
-                            {/*            <span>?</span>*/}
-                            {/*            <div*/}
-                            {/*                className={this.state.hintShowing ? "inputData_hint_info showData" : "inputData_hint_info"}>*/}
-                            {/*<span>Срок действия вашей карты написан на лицевой стороне карты.*/}
-                            {/*Запишите срок дейсвия в формате Месяц / 2 последние цифры года.</span>*/}
-                            {/*            </div>*/}
-                            {/*        </div>*/}
-                            {/*    </div>*/}
-                            {/*    <div className="inputData_section shotWidth">*/}
-                            {/*        <span>CVV/CVC</span>*/}
-                            {/*        <input*/}
-                            {/*            placeholder="XXX"*/}
-                            {/*            id="cvc"*/}
-                            {/*            type="number"*/}
-                            {/*            onBlur={handleBlur}*/}
-                            {/*            onChange={handleChange}*/}
-                            {/*            value={values.cvc}*/}
-                            {/*            name="cvc"*/}
-                            {/*            className={touched.cvc && errors.cvc ? "has-error" : null}*/}
-                            {/*        />*/}
-                            {/*        <Error touched={touched.cvc} message={errors.cvc} />*/}
-
-                            {/*        <div onClick={this.showCardHint} tabindex="0" onBlur={this.showCardHint}*/}
-                            {/*             className={this.state.cardHintShowing ? "inputData_hint active" : "inputData_hint"}>*/}
-                            {/*            <span>?</span>*/}
-                            {/*            <div*/}
-                            {/*                className={this.state.cardHintShowing ? 'inputData_hint_info elsePosition' : 'inputData_hint_info'}>*/}
-                            {/*                <span>CVV/CVC – код это последние 3 цифры на оборотной стороне карты</span>*/}
-                            {/*                <img src={group} alt=""/>*/}
-                            {/*            </div>*/}
-                            {/*        </div>*/}
-                            {/*    </div>*/}
+                            <div className="cardData_list">
+                                <a href="#someLink"><img src={icon_1} alt=""/></a>
+                                <a href="#someLink"><img src={icon_2} alt=""/></a>
+                                <a href="#someLink"><img src={icon_3} alt=""/></a>
+                                <a href="#someLink"><img src={icon_4} alt=""/></a>
                             </div>
-            {/*                <div className="agreement">*/}
-            {/*<span>Нажимая кнопку "Оплатить",*/}
-            {/*    Вы соглашаетесь на обработку данных в соответствии с <a href=""> Пользовательским соглашением</a></span>*/}
-            {/*                </div>*/}
-                            {/*<button type="submit" className="submitButton" disabled={isSubmitting}>Оплатить 270 byn</button>*/}
-                            {/*<div className="transactionSecurity">*/}
-                            {/*    <span>Безопасность работы подтверждена <a href="">сертификатом PCI DSS</a></span>*/}
-                            {/*</div>*/}
+                            <Field
+                                name="card"
+                                type="number"
+                                title="Номер Карты"
+                                placeholder="XXXX XXXX XXXX XXXX"
+                                className="inputSection_smallBottomMargin"
+                                component={InputField}
+                            />
+                            <Field
+                                name="name"
+                                title="Имя владельца карты"
+                                placeholder="YOUR NAME"
+                                className="inputSection_smallBottomMargin"
+                                component={InputField}
+                            />
+                            <div className="cardData__lnLineSectionWrap">
+                                <Field
+                                    name="cardDate"
+                                    title="Срок действия"
+                                    placeholder="MM / YY"
+                                    className="inputSection_shotWidth"
+                                    component={ExpireField}
+                                    helper='Срок действия вашей карты написан на лицевой стороне карты. Запишите срок дейсвия в формате Месяц / 2 последние цифры года.'
+                                />
+                                <Field
+                                    name="cvc"
+                                    type="number"
+                                    title="CVV/CVC"
+                                    placeholder="XXX"
+                                    className="inputSection_shotWidth"
+                                    component={InputField}
+                                    helper='CVV/CVC – код это последние 3 цифры на оборотной стороне карты'
+                                    imgSrc={group}
+                                />
+                            </div>
+                            <div className="agreement">
+                                <span>
+                                  Нажимая кнопку "Оплатить",
+                                  Вы соглашаетесь на обработку данных в соответствии с <a href="#someLink">Пользовательским соглашением</a>
+                                </span>
+                            </div>
+                            <button
+                              type="submit"
+                              className="submitButton"
+                              disabled={!isValid || isSubmitting}
+                            >
+                                Оплатить 270 byn
+                            </button>
+                            <div className="transactionSecurity">
+                                <span>
+                                  Безопасность работы подтверждена <a href="#someLink">сертификатом PCI DSS</a>
+                                </span>
+                            </div>
                         </div>
-                        <button type="submit" disabled={isSubmitting}>Submit</button>
                     </form>
                 )}
-
             </Formik>
-        );
+        )
     }
 }
 
-export default App;
+export default App
