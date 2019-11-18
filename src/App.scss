@@ -390,7 +390,8 @@
     font-weight: 600;
     font-size: 12px;
     line-height: 20px;
-    background: url("/src/assets/icons/verified.png");
+    padding-left: 30px;
+    background: url("./assets/icons/verified.png") no-repeat 4px 3px;
     color: #000000;
 
     a {
