@@ -179,9 +179,14 @@ input[type='number'] {
     border: 1px solid #EB5757;
     color: #4F4F4F;
   }
+  input.has-error {
+    background: rgba(235, 87, 87, 0.1);
+    border: 1px solid #EB5757;
+    color: #4F4F4F;
+  }
   input:hover{
     background: rgba(255, 255, 255, 0.1);
-    border: 1px solid #9FA1B0;
+    border: 1px solid #9FA1B0 !important;
     color: #4F4F4F;
   }
   input:focus{
@@ -241,6 +246,8 @@ input[type='number'] {
   }
 
 .inputData_hint_info {
+  pointer-events: none;
+  cursor: default;
   position: absolute;
   width: 336px;
   bottom: 28px;
@@ -371,4 +378,15 @@ input[type='number'] {
     }
   }
 }
+
+//errors------------------------------------/
+.invalid {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  color: #EB5757;
+}
+
 
