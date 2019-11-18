@@ -69,13 +69,13 @@ class App extends Component {
         return (
             <Formik initialValues={{email: "", name: "", card: "",  phone: "", cvc: "", cardDate: "" }}
                     validationSchema={validationSchema}
-                    onSubmit={(values, {setSubmitting}) =>{
+                    onSubmit={(values, {setSubmitting, resetForm}) =>{
                         debugger
                         setSubmitting(true);
 
                         setTimeout(()=> {
                             alert(JSON.stringify(values, null, 2));
-
+                            resetForm();
                             setSubmitting(false)
                         },1000)
                     }}
@@ -163,7 +163,7 @@ class App extends Component {
                             {/*    />*/}
                             {/*    <Error touched={touched.name} message={errors.name} />*/}
                             {/*</div>*/}
-                            {/*<div className="cardData_Inline">*/}
+                            <div className="cardData_Inline">
                             {/*    <div className="inputData_section shotWidth">*/}
                             {/*        <span>Срок действия</span>*/}
                             {/*        <input*/}
@@ -212,7 +212,7 @@ class App extends Component {
                             {/*            </div>*/}
                             {/*        </div>*/}
                             {/*    </div>*/}
-                            {/*</div>*/}
+                            </div>
             {/*                <div className="agreement">*/}
             {/*<span>Нажимая кнопку "Оплатить",*/}
             {/*    Вы соглашаетесь на обработку данных в соответствии с <a href=""> Пользовательским соглашением</a></span>*/}
