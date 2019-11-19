@@ -5,7 +5,7 @@
 .payForm {
   background: #ffffff;
   max-width: 480px;
-  margin: 0 auto 50px auto;
+  margin: 0 auto 0 auto;
   box-shadow: 0px 15px 30px rgba(186, 188, 232, 0.3);
   border-radius: 6px;
   box-sizing: border-box;
@@ -302,8 +302,6 @@
   left: -310px;
 }
 
-//  background: url("./assets/icons/help.png") #000;
-
 .cardData {
   border-radius: 0 0 6px 6px;
   padding: 30px 40px 25px 40px;
@@ -408,5 +406,16 @@ input::-webkit-inner-spin-button {
 
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+//footer-----------------------------------/
+.footer {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  a {
+    display: block;
+  }
 }
 

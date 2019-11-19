@@ -6,6 +6,11 @@ import icon_1 from "./assets/icons/small_logo_1.png"
 import icon_2 from "./assets/icons/small_logo_2.png"
 import icon_3 from "./assets/icons/small_logo_3.png"
 import icon_4 from "./assets/icons/small_logo_4.png"
+import verified_by_Visa from "./assets/icons/verified_by_Visa.png"
+import xmiraccept from "./assets/icons/xmiraccept.png"
+import pci_logo from "./assets/icons/pci_logo.png"
+import MasterCardSecureCode from "./assets/icons/MasterCardSecure.png"
+
 import group from "./assets/images/GroupCard.png"
 import { InputField, PhoneField, ExpireField } from "./fields"
 
@@ -55,6 +60,7 @@ class App extends Component {
                 onSubmit={this.handleSubmit}
             >
                 {({ handleSubmit, isSubmitting, isValid }) => (
+                    <div>
                     <form className="payForm" onSubmit={handleSubmit}>
                         <div className="title">
                             <span className="title__totalPay">К оплате: <span>270 BYN</span></span>
@@ -137,7 +143,24 @@ class App extends Component {
                                 </span>
                             </div>
                         </div>
+
                     </form>
+                        <div className="footer">
+                            <a href="#someLink">
+                                <img src={ verified_by_Visa }/>
+                            </a>
+                            <a href="#someLink">
+                                <img src={ MasterCardSecureCode }/>
+                            </a>
+                            <a href="#someLink">
+                                <img src={ xmiraccept}/>
+                            </a>
+                            <a href="#someLink">
+                                <img src={ pci_logo}/>
+                            </a>
+                        </div>
+                    </div>
+
                 )}
             </Formik>
         )
