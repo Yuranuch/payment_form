@@ -4,6 +4,7 @@ import { Error, Helper } from '../components'
 
 class ExpireField extends Component {
 
+
   handleChange = e => {
     const { value } = e.target
     const { form, field } = this.props
@@ -16,7 +17,7 @@ class ExpireField extends Component {
   }
 
   render() {
-    const { form, field, title, type = 'text', placeholder, className, helper, imgSrc } = this.props
+    const { form, field, title, type = 'text', placeholder, className, helper, imgSrc, helperClass } = this.props
     const { name, value } = field
     const touched = form.touched[name]
     const error = form.errors[name]
@@ -35,7 +36,7 @@ class ExpireField extends Component {
             className={touched && error ? "has-error" : null}
           />
           {helper &&
-            <Helper text={helper} imgSrc={imgSrc} />
+            <Helper helperClass={helperClass} text={helper} imgSrc={imgSrc} />
           }
         </div>
         <Error touched={touched} message={error}/>

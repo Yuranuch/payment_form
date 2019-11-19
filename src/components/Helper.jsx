@@ -16,14 +16,15 @@ class Helper extends Component {
   }
 
   render() {
-    const { text, imgSrc } = this.props
+    const { text, imgSrc, helperClass } = this.props
     const { isOpen } = this.state
     return (
       <div
         className={isOpen ? "hint hint_active" : "hint"}
       >
         <span onClick={this.handleClick}>?</span>
-        <div className={isOpen ? "hint__info hint__info_showData" : "hint__info"}>
+        {/*<div className={isOpen ? `hint__info hint__info_showData` : "hint__info"}>*/}
+          <div className={isOpen ? `hint__info ${ helperClass }` : "hint__info"}>
             <span>{text}</span>
             {imgSrc &&
               <img src={imgSrc} alt={text} />

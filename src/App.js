@@ -111,6 +111,7 @@ class App extends Component {
                                     placeholder="MM / YY"
                                     className="inputSection_shotWidth"
                                     component={ExpireField}
+                                    helperClass="hint__info_showData"
                                     helper='Срок действия вашей карты написан на лицевой стороне карты. Запишите срок дейсвия в формате Месяц / 2 последние цифры года.'
                                 />
                                 <Field
@@ -120,6 +121,7 @@ class App extends Component {
                                     placeholder="XXX"
                                     className="inputSection_shotWidth"
                                     component={InputField}
+                                    helperClass="hint__info_elsePosition"
                                     helper='CVV/CVC – код это последние 3 цифры на оборотной стороне карты'
                                     imgSrc={group}
                                 />
