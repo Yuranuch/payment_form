@@ -13,7 +13,7 @@
     "react-onclickoutside": "^6.9.0",
     "react-phone-input-2": "^2.10.1",
     "react-phone-number-input": "^2.4.1",
-    "react-scripts": "3.2.0",
+    "react-scripts": "5.0.1",
     "react-transition-group": "^4.3.0",
     "yup": "^0.27.0"
   },
